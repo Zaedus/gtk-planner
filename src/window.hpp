@@ -5,4 +5,9 @@ class MainWindow : public Gtk::Window
     public:
 
     MainWindow();
+
+    private:
+
+    Glib::RefPtr<Gtk::Builder> builder;
+    Gtk::Viewport *content;
 };
