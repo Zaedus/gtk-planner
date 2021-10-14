@@ -30,4 +30,4 @@ $(OBJ):
 	mkdir -p $@
 
 clean:
-	-rm -rf build
+	-rm -rf $(OBJ)
