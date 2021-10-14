@@ -1,3 +1,6 @@
 .vscode
 gtk-planner
 build
+
+resources/ui/resources.*
+resources/ui/*~
