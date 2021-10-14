@@ -10,7 +10,7 @@ SOURCES := $(wildcard $(SRC)/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
 HEADERS := $(wildcard $(SRC)/*.hpp)
 
-LIBS 	 := gtkmm-4.0
+LIBS 	 := gtkmm-3.0
 CFLAGS   := $(shell pkg-config --cflags $(LIBS)) -std=c++17
 LDFLAGS  := $(shell pkg-config --libs $(LIBS)) -lstdc++
 
