@@ -4,11 +4,12 @@ MAKEFLAGS := --jobs=$(shell nproc)
 
 SRC := src
 OBJ := build
+UI  := resources/ui
 BIN := gtk-planner
 
 SOURCES := $(wildcard $(SRC)/*.cpp)
-OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
-HEADERS := $(wildcard $(SRC)/*.hpp)
+OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES)) $(OBJ)/resources.o
+HEADERS := $(wildcard $(SRC)/*.hpp) $(UI)/resources.h
 
 LIBS 	 := gtkmm-3.0
 CFLAGS   := $(shell pkg-config --cflags $(LIBS)) -std=c++17
@@ -24,7 +25,10 @@ $(BIN): $(OBJECTS) $(HEADERS)
 	$(CC) -o $(BIN) $(OBJECTS) $(LDFLAGS)
 
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
-	$(CC) -c $< -o $@ -D VERSION=\"$(VERSION)\" $(CFLAGS) $(INCFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS) $(INCFLAGS)
+
+$(OBJ)/resources.o:
+	$(MAKE) -C $(UI)
 
 $(OBJ):
 	mkdir -p $@
