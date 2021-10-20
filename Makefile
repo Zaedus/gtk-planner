@@ -11,7 +11,7 @@ SOURCES := $(wildcard $(SRC)/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES)) $(OBJ)/resources.o
 HEADERS := $(wildcard $(SRC)/*.hpp) $(UI)/resources.h
 
-LIBS 	 := gtkmm-3.0
+LIBS 	 := gtkmm-3.0 libhandy-1 gtk+-3.0
 CFLAGS   := $(shell pkg-config --cflags $(LIBS)) -std=c++17
 LDFLAGS  := $(shell pkg-config --libs $(LIBS)) -lstdc++
 
