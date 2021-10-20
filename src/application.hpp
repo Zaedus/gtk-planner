@@ -16,4 +16,5 @@ public:
     static Glib::RefPtr<PlannerApplication> get();
 
     HdyApplicationWindow *main_window;
+    GtkListBox *projects_list;
 };
