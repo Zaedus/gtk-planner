@@ -1,11 +1,7 @@
-#include "window.hpp"
+#include "application.hpp"
 
-int main(int argc, char* argv[]) {
-
-    Glib::init();
-
-    auto app = Gtk::Application::create(argc, argv, "com.github.zaedus.gtk-planner");
-    MainWindow window = MainWindow();
-
-    return app->run(window);
+int main(int argc, char* argv[])
+{
+    Glib::RefPtr<PlannerApplication> application = PlannerApplication::get();
+    return application->run(argc, argv);
 }
