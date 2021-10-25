@@ -27,7 +27,7 @@ $(BIN): $(OBJECTS) $(HEADERS)
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCFLAGS)
 
-$(OBJ)/resources.o:
+$(OBJ)/resources.o: 
 	$(MAKE) -C $(UI)
 
 $(OBJ):
@@ -35,3 +35,5 @@ $(OBJ):
 
 clean:
 	-rm -rf $(OBJ)
+
+.PHONY: resources clean debug release
