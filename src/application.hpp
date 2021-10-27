@@ -3,8 +3,15 @@
 #include <gtkmm.h>
 #include <libhandy-1/handy.h>
 
+#include <vector>
+
+#include "project.hpp"
+
 class PlannerApplication : public Gtk::Application
 {
+private:
+    std::vector<Project> projects;
+
 protected:
     PlannerApplication();
 

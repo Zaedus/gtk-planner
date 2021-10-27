@@ -1,17 +1,18 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <string>
 
 class Project
 {
 private:
     void create_list_item();
     
-    GtkListBox *project_list;
-
+    GtkListBox *projects_list;
+    GtkGrid *list_item_container;
+    std::string name;
 
 public:
-    Project(GtkListBox *project_list);
-
-
+    Project(std::string name, GtkListBox *projects_list);
+    void select_list_item();
 };
