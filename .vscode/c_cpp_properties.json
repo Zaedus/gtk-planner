@@ -1,0 +1,47 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/**",
+                "/usr/include/gtkmm-3.0", // gtkmm
+                "/usr/include/glibmm-2.4", // glibmm
+                "/usr/include/pangomm-1.4", // pangomm
+                "/usr/include/cairomm-1.0", // cairomm
+                "/usr/include/atkmm-1.6", // atkmm
+                "/usr/include/gdkmm-2.4", // gdkmm
+                "/usr/include/gdkmm-3.0", // gdkmm but 3?
+                "/usr/include/giomm-2.4", // giomm
+                "/usr/include/glib-2.0", // glib
+                "/usr/include/sigc++-2.0", // sigc++
+                "/usr/include/pango-1.0", // pango
+                "/usr/include/harfbuzz", // harfbuzz
+                "/usr/include/cairo", // cairo
+                "/usr/include/freetype2", // freetype2
+                "/usr/include/gtk-3.0", // gdk
+                "/usr/include/gdk-pixbuf-2.0", // gdk-pixbuf
+                "/usr/include/atk-1.0", // atk
+                "/usr/lib/gtkmm-3.0/include", // gtkmmconfig.h
+                "/usr/lib/glibmm-2.4/include", // glibmmconfig.h
+                "/usr/lib/pangomm-1.4/include", // pangommconfig.h
+                "/usr/lib/cairomm-1.0/include", // cairommconfig.h
+                "/usr/lib/atkmm-1.6/include", // atkmmconfig.h
+                "/usr/lib/gdkmm-3.0/include", // gdkmmconfig.h
+                "/usr/lib/giomm-2.4/include", // giommconfig.h
+                "/usr/lib/sigc++-2.0/include", // sigc++config.h
+                "/usr/lib/glib-2.0/include", // glibconfig.h
+                "/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include",
+                "/usr/local/include",
+                "/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed",
+                "/usr/include"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
