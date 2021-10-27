@@ -5,6 +5,7 @@ void create_main_window(PlannerApplication *app)
     HdyApplicationWindow *main_window;
     GtkListBox *projects_list;
 
+
     GtkBuilder *builder = gtk_builder_new();
     gtk_builder_add_from_resource(builder, "/com/zaedus/gtk-planner/mainwindow.glade", NULL);
     
@@ -13,8 +14,9 @@ void create_main_window(PlannerApplication *app)
     gtk_widget_set_name(GTK_WIDGET (main_window), "gtk-planner");
     app->main_window = main_window;
 
-    projects_list = GTK_LIST_BOX (gtk_builder_get_object (builder, "projects"));
-    app->projects_list = projects_list;
+    app->projects_list = GTK_LIST_BOX (gtk_builder_get_object (builder, "projects"));
+    app->project_content = GTK_STACK (gtk_builder_get_object (builder, "project_content"));
+
 
     gtk_widget_show(GTK_WIDGET (main_window));
 

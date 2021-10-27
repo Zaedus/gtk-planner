@@ -47,8 +47,8 @@ void PlannerApplication::on_startup()
 
     setup_signals();
 
-    projects.push_back(Project("My Project", projects_list));
-    projects.push_back(Project("My Second Project", projects_list));
+    projects.push_back(Project("My Project", projects_list, project_content));
+    projects.push_back(Project("My Second Project", projects_list, project_content));
     projects[0].select_list_item();
 }
 

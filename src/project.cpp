@@ -1,7 +1,7 @@
 #include "project.hpp"
 
-Project::Project(std::string name, GtkListBox *projects_list)
-    : projects_list{projects_list}, name{name}
+Project::Project(std::string name, GtkListBox *projects_list, GtkStack *project_content)
+    : name{name}, projects_list{projects_list}, project_content{project_content}
 {
     create_list_item();
 };
@@ -30,4 +30,12 @@ void Project::select_list_item()
 {
     GtkListBoxRow *row = GTK_LIST_BOX_ROW (gtk_widget_get_parent(GTK_WIDGET (list_item_container)));
     gtk_list_box_select_row(projects_list, row);
+}
+
+void Project::show_project()
+{
+    if (stack_index == -1 || content_container == nullptr) {
+        content_container = GTK_FLOW_BOX (gtk_flow_box_new());
+        gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
+    }
 }

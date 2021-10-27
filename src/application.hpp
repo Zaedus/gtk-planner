@@ -27,4 +27,5 @@ public:
 
     HdyApplicationWindow *main_window;
     GtkListBox *projects_list;
+    GtkStack *project_content;
 };
