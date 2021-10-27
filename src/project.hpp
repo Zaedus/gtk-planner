@@ -20,5 +20,4 @@ public:
     void show_project();
 
     std::string name;
-    int stack_index = -1;
 };
