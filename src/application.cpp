@@ -23,9 +23,14 @@ Glib::RefPtr<PlannerApplication> PlannerApplication::get()
     return singleton;
 }
 
+void PlannerApplication::setup_signals()
+{
+    g_signal_connect(projects_list, "row-selected", G_CALLBACK (PlannerApplication::on_new_row_selected), &projects);
+}
+
 
 /**
- * Inherited events
+ * Events
  */
 
 void PlannerApplication::on_startup()
@@ -40,7 +45,10 @@ void PlannerApplication::on_startup()
 
     create_main_window(this);
 
+    setup_signals();
+
     projects.push_back(Project("My Project", projects_list));
+    projects.push_back(Project("My Second Project", projects_list));
     projects[0].select_list_item();
 }
 
@@ -52,4 +60,10 @@ void PlannerApplication::on_activate()
 int PlannerApplication::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& cli)
 {
     return 0;
+}
+
+void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, gpointer pd)
+{
+    std::vector<Project> *projects = (std::vector<Project>*)pd;
+    std::cout << "Box at index " << (*projects)[gtk_list_box_row_get_index(row)].name << std::endl;
 }

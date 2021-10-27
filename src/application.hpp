@@ -10,6 +10,8 @@
 class PlannerApplication : public Gtk::Application
 {
 private:
+    void setup_signals();
+
     std::vector<Project> projects;
 
 protected:
@@ -21,6 +23,7 @@ protected:
 
 public:
     static Glib::RefPtr<PlannerApplication> get();
+    static void on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, gpointer pd);
 
     HdyApplicationWindow *main_window;
     GtkListBox *projects_list;

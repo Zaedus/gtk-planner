@@ -10,9 +10,10 @@ private:
     
     GtkListBox *projects_list;
     GtkGrid *list_item_container;
-    std::string name;
 
 public:
     Project(std::string name, GtkListBox *projects_list);
     void select_list_item();
+
+    std::string name;
 };
