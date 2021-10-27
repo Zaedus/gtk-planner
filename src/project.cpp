@@ -34,7 +34,7 @@ void Project::select_list_item()
 
 void Project::show_project()
 {
-    if (stack_index == -1 || content_container == nullptr) {
+    if (content_container == nullptr) {
         content_container = GTK_FLOW_BOX (gtk_flow_box_new());
         gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
     }
