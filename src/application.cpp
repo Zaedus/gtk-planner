@@ -65,5 +65,5 @@ int PlannerApplication::on_command_line(const Glib::RefPtr<Gio::ApplicationComma
 void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, gpointer pd)
 {
     std::vector<Project> *projects = (std::vector<Project>*)pd;
-    std::cout << "Box at index " << (*projects)[gtk_list_box_row_get_index(row)].name << std::endl;
+    (*projects)[gtk_list_box_row_get_index(row)].show_project();
 }
