@@ -1,6 +1,13 @@
-.vscode
-gtk-planner
-build
+## Ignore
 
-resources/ui/resources.*
-resources/ui/*~
+/.vscode/*
+
+gtk-planner
+/build
+
+/resources/ui/resources.*
+/resources/ui/*~
+
+## Allow
+
+!/.vscode/c_cpp_properties.json
