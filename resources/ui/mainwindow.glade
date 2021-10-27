@@ -27,86 +27,6 @@
                   <object class="GtkListBox" id="projects">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <child>
-                      <object class="GtkListBoxRow">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <child>
-                          <!-- n-columns=2 n-rows=1 -->
-                          <object class="GtkGrid">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">10</property>
-                            <property name="margin-end">10</property>
-                            <property name="margin-top">10</property>
-                            <property name="margin-bottom">10</property>
-                            <property name="column-spacing">15</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="icon-name">starred-symbolic</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">My Project</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBoxRow">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <child>
-                          <!-- n-columns=2 n-rows=1 -->
-                          <object class="GtkGrid">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">10</property>
-                            <property name="margin-end">10</property>
-                            <property name="margin-top">10</property>
-                            <property name="margin-bottom">10</property>
-                            <property name="column-spacing">15</property>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="icon-name">starred-symbolic</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">My Project</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
                     <style>
                       <class name="foreground"/>
                     </style>
@@ -160,7 +80,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="xpad">8</property>
-                    <property name="icon-name">list-add</property>
+                    <property name="icon-name">list-add-symbolic</property>
                   </object>
                 </child>
                 <child>
@@ -192,7 +112,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
-                <property name="title" translatable="yes">Project Header</property>
+                <property name="title" translatable="yes">Sample Project</property>
                 <property name="show-close-button">True</property>
                 <child>
                   <object class="GtkImage">
