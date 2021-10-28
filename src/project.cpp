@@ -1,5 +1,7 @@
 #include "project.hpp"
 
+#include <libhandy-1/handy.h>
+
 Project::Project(std::string name, GtkListBox *projects_list, GtkStack *project_content)
     : name{name}, projects_list{projects_list}, project_content{project_content}
 {
@@ -36,6 +38,16 @@ void Project::show_project()
 {
     if (content_container == nullptr) {
         content_container = GTK_FLOW_BOX (gtk_flow_box_new());
+        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 0);
+        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 1);
+        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 2);
+        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 3);
+        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 4);
+
         gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
+
+        gtk_widget_show_all(GTK_WIDGET (content_container));
     }
+
+    gtk_stack_set_visible_child_name(project_content, name.c_str());
 }

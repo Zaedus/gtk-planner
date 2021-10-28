@@ -25,7 +25,15 @@ Glib::RefPtr<PlannerApplication> PlannerApplication::get()
 
 void PlannerApplication::setup_signals()
 {
-    g_signal_connect(projects_list, "row-selected", G_CALLBACK (PlannerApplication::on_new_row_selected), &projects);
+    on_row_select_payload *select_pd = (on_row_select_payload*) malloc(sizeof(on_row_select_payload)); 
+    select_pd->content_leaflet = content_leaflet;
+    select_pd->titlebar_leaflet = titlebar_leaflet;
+    select_pd->projects = &projects;
+
+    g_signal_connect(projects_list, "row-activated", G_CALLBACK (PlannerApplication::on_new_row_selected), select_pd);
+    g_signal_connect(content_leaflet, "child-switched", G_CALLBACK (PlannerApplication::on_content_child_switched), titlebar_leaflet);
+    g_object_bind_property(content_leaflet, "folded", back_button, "visible", G_BINDING_SYNC_CREATE);
+    g_signal_connect(back_button, "clicked", G_CALLBACK (PlannerApplication::on_back_button_clicked), content_leaflet);
 }
 
 
@@ -62,8 +70,20 @@ int PlannerApplication::on_command_line(const Glib::RefPtr<Gio::ApplicationComma
     return 0;
 }
 
-void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, gpointer pd)
+void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, on_row_select_payload *pd)
 {
-    std::vector<Project> *projects = (std::vector<Project>*)pd;
-    (*projects)[gtk_list_box_row_get_index(row)].show_project();
+    (*(pd->projects))[gtk_list_box_row_get_index(row)].show_project();
+    hdy_leaflet_set_visible_child_name(pd->content_leaflet, "content");
+}
+
+void PlannerApplication::on_content_child_switched(HdyLeaflet *content_leaflet, uint index, gint64 duration, HdyLeaflet *titlebar_leaflet) {
+    const char *current_child = hdy_leaflet_get_visible_child_name(content_leaflet);
+    const bool folded = hdy_leaflet_get_folded(content_leaflet);
+
+    hdy_leaflet_set_visible_child_name(titlebar_leaflet, current_child);
+}
+
+void PlannerApplication::on_back_button_clicked(GtkButton *button, HdyLeaflet *leaflet)
+{
+    hdy_leaflet_set_visible_child_name(leaflet, "list");
 }
