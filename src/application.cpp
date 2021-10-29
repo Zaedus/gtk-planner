@@ -77,10 +77,7 @@ void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row
 }
 
 void PlannerApplication::on_content_child_switched(HdyLeaflet *content_leaflet, uint index, gint64 duration, HdyLeaflet *titlebar_leaflet) {
-    const char *current_child = hdy_leaflet_get_visible_child_name(content_leaflet);
-    const bool folded = hdy_leaflet_get_folded(content_leaflet);
-
-    hdy_leaflet_set_visible_child_name(titlebar_leaflet, current_child);
+    hdy_leaflet_set_visible_child_name(titlebar_leaflet, hdy_leaflet_get_visible_child_name(content_leaflet));
 }
 
 void PlannerApplication::on_back_button_clicked(GtkButton *button, HdyLeaflet *leaflet)
