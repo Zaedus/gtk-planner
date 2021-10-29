@@ -30,10 +30,15 @@ void PlannerApplication::setup_signals()
     select_pd->titlebar_leaflet = titlebar_leaflet;
     select_pd->projects = &projects;
 
+    // Handle various events
     g_signal_connect(projects_list, "row-activated", G_CALLBACK (PlannerApplication::on_new_row_selected), select_pd);
-    g_signal_connect(content_leaflet, "child-switched", G_CALLBACK (PlannerApplication::on_content_child_switched), titlebar_leaflet);
-    g_object_bind_property(content_leaflet, "folded", back_button, "visible", G_BINDING_SYNC_CREATE);
     g_signal_connect(back_button, "clicked", G_CALLBACK (PlannerApplication::on_back_button_clicked), content_leaflet);
+
+    // Show the back button when the leaflet is folded (aka when the list and content are show individually)
+    g_object_bind_property(content_leaflet, "folded", back_button, "visible", G_BINDING_SYNC_CREATE); 
+
+    // Switch titlebar section focus with content leaflet section
+    g_object_bind_property(content_leaflet, "visible-child-name", titlebar_leaflet, "visible-child-name", G_BINDING_SYNC_CREATE);
 }
 
 
@@ -55,8 +60,12 @@ void PlannerApplication::on_startup()
 
     setup_signals();
 
+    
+
     projects.push_back(Project("My Project", projects_list, project_content));
     projects.push_back(Project("My Second Project", projects_list, project_content));
+
+    // Select first item in list
     projects[0].select_list_item();
 }
 
@@ -74,10 +83,6 @@ void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row
 {
     (*(pd->projects))[gtk_list_box_row_get_index(row)].show_project();
     hdy_leaflet_set_visible_child_name(pd->content_leaflet, "content");
-}
-
-void PlannerApplication::on_content_child_switched(HdyLeaflet *content_leaflet, uint index, gint64 duration, HdyLeaflet *titlebar_leaflet) {
-    hdy_leaflet_set_visible_child_name(titlebar_leaflet, hdy_leaflet_get_visible_child_name(content_leaflet));
 }
 
 void PlannerApplication::on_back_button_clicked(GtkButton *button, HdyLeaflet *leaflet)

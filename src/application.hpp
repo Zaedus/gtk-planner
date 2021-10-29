@@ -30,7 +30,6 @@ protected:
 public:
     static Glib::RefPtr<PlannerApplication> get();
     static void on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, on_row_select_payload *pd);
-    static void on_content_child_switched(HdyLeaflet *content_leaflet, uint index, gint64 duration, HdyLeaflet *titlebar_leaflet);
     static void on_back_button_clicked(GtkButton *button, HdyLeaflet *leaflet);
 
     HdyApplicationWindow *main_window;
