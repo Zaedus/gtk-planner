@@ -60,13 +60,12 @@ void PlannerApplication::on_startup()
 
     setup_signals();
 
-    
-
     projects.push_back(Project("My Project", projects_list, project_content));
     projects.push_back(Project("My Second Project", projects_list, project_content));
 
-    // Select first item in list
+    // Setup default project selected
     projects[0].select_list_item();
+    projects[0].show_project();
 }
 
 void PlannerApplication::on_activate()
