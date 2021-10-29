@@ -62,7 +62,7 @@ void PlannerApplication::on_startup()
 
 void PlannerApplication::on_activate()
 {
-    std::cout << "Activated!" << std::endl;
+    gtk_window_present(GTK_WINDOW (main_window));
 }
 
 int PlannerApplication::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& cli)
