@@ -10,7 +10,7 @@
 typedef struct on_row_select_payload {
     std::vector<Project> *projects;
     HdyLeaflet *content_leaflet;
-    HdyLeaflet *titlebar_leaflet;
+    HdyLeaflet *headerbar_leaflet;
 } on_row_select_payload;
 
 class PlannerApplication : public Gtk::Application
@@ -38,5 +38,6 @@ public:
     GtkButton *back_button;
 
     HdyLeaflet *content_leaflet;
-    HdyLeaflet *titlebar_leaflet;
+    HdyLeaflet *headerbar_leaflet;
+    HdyHeaderBar *content_headerbar;
 };

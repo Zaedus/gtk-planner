@@ -18,7 +18,8 @@ void create_main_window(PlannerApplication *app)
     app->projects_list = GTK_LIST_BOX (gtk_builder_get_object (builder, "projects"));
     app->project_content = GTK_STACK (gtk_builder_get_object (builder, "project_content"));
     app->content_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "content_leaflet"));
-    app->titlebar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "titlebar_leaflet"));
+    app->content_headerbar = HDY_HEADER_BAR (gtk_builder_get_object(builder, "project_content_headerbar"));
+    app->headerbar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "headerbar_leaflet"));
     app->back_button = GTK_BUTTON (gtk_builder_get_object(builder, "back_button"));
 
 

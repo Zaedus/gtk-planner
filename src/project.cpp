@@ -2,8 +2,10 @@
 
 #include <libhandy-1/handy.h>
 
-Project::Project(std::string name, GtkListBox *projects_list, GtkStack *project_content)
-    : name{name}, projects_list{projects_list}, project_content{project_content}
+Project::Project(std::string name, ProjectWidgets *widgets)
+    : name{name}, projects_list{widgets->projects_list}, 
+      project_content{widgets->project_content}, 
+      content_headerbar{widgets->content_headerbar}
 {
     create_list_item();
 };
@@ -48,6 +50,8 @@ void Project::show_project()
 
         gtk_widget_show_all(GTK_WIDGET (content_container));
     }
+
+    hdy_header_bar_set_title(content_headerbar, name.c_str());
 
     gtk_stack_set_visible_child_name(project_content, name.c_str());
 }

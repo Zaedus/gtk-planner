@@ -27,7 +27,7 @@ void PlannerApplication::setup_signals()
 {
     on_row_select_payload *select_pd = (on_row_select_payload*) malloc(sizeof(on_row_select_payload)); 
     select_pd->content_leaflet = content_leaflet;
-    select_pd->titlebar_leaflet = titlebar_leaflet;
+    select_pd->headerbar_leaflet = headerbar_leaflet;
     select_pd->projects = &projects;
 
     // Handle various events
@@ -37,8 +37,8 @@ void PlannerApplication::setup_signals()
     // Show the back button when the leaflet is folded (aka when the list and content are show individually)
     g_object_bind_property(content_leaflet, "folded", back_button, "visible", G_BINDING_SYNC_CREATE); 
 
-    // Switch titlebar section focus with content leaflet section
-    g_object_bind_property(content_leaflet, "visible-child-name", titlebar_leaflet, "visible-child-name", G_BINDING_SYNC_CREATE);
+    // Switch headerbar section focus with content leaflet section
+    g_object_bind_property(content_leaflet, "visible-child-name", headerbar_leaflet, "visible-child-name", G_BINDING_SYNC_CREATE);
 }
 
 
@@ -57,11 +57,18 @@ void PlannerApplication::on_startup()
     Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/com/zaedus/gtk-planner/mainwindow.glade");
 
     create_main_window(this);
-
     setup_signals();
 
-    projects.push_back(Project("My Project", projects_list, project_content));
-    projects.push_back(Project("My Second Project", projects_list, project_content));
+    // Setup projects
+
+    ProjectWidgets *widgets = (ProjectWidgets*)malloc(sizeof(ProjectWidgets));
+    widgets->content_headerbar = content_headerbar;
+    widgets->project_content = project_content;
+    widgets->projects_list = projects_list;
+
+    projects.push_back(Project("My Project", widgets));
+    projects.push_back(Project("My Second Project", widgets));
+    projects.push_back(Project("My Third Project", widgets));
 
     // Setup default project selected
     projects[0].select_list_item();
@@ -80,7 +87,8 @@ int PlannerApplication::on_command_line(const Glib::RefPtr<Gio::ApplicationComma
 
 void PlannerApplication::on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, on_row_select_payload *pd)
 {
-    (*(pd->projects))[gtk_list_box_row_get_index(row)].show_project();
+    int projectIndex = gtk_list_box_row_get_index(row);
+    (*(pd->projects))[projectIndex].show_project();
     hdy_leaflet_set_visible_child_name(pd->content_leaflet, "content");
 }
 
