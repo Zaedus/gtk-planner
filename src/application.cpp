@@ -50,8 +50,6 @@ void PlannerApplication::on_startup()
 {
     Gtk::Application::on_startup();
 
-    std::cout << "Started up!" << std::endl;
-
     hdy_init();
 
     Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/com/zaedus/gtk-planner/mainwindow.glade");
