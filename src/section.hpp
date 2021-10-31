@@ -1,5 +1,7 @@
 #pragma once
 
+class Project;
+
 #include "project.hpp"
 
 class Section 

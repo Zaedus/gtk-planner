@@ -2,7 +2,13 @@
 
 #include <gtk/gtk.h>
 #include <libhandy-1/handy.h>
+
 #include <string>
+#include <vector>
+
+class Section;
+
+#include "section.hpp"
 
 typedef struct project_widgets
 {
@@ -22,6 +28,8 @@ private:
 
     GtkFlowBox *content_container = nullptr;
     GtkGrid *list_item_container;
+
+    std::vector<Section> sections;
 
 public:
     Project(std::string name, ProjectWidgets *widgets);
