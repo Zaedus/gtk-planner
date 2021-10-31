@@ -4,6 +4,8 @@ void create_main_window(PlannerApplication *app)
 {
     HdyApplicationWindow *main_window;
     GtkListBox *projects_list;
+    HdyLeaflet *content_leaflet;
+    HdyLeaflet *headerbar_leaflet;
 
 
     GtkBuilder *builder = gtk_builder_new();
@@ -12,14 +14,19 @@ void create_main_window(PlannerApplication *app)
     main_window = HDY_APPLICATION_WINDOW (gtk_builder_get_object (builder, "main"));
     gtk_window_set_application(GTK_WINDOW (main_window), app->gobj());
     gtk_window_set_default_size(GTK_WINDOW (main_window), 1300, 900); // Note: Developement size, not official size
-    gtk_widget_set_name(GTK_WIDGET (main_window), "gtk-planner");
+    gtk_widget_set_name(GTK_WIDGET (main_window), "gtk planner");
     app->main_window = main_window;
+
+    headerbar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "headerbar_leaflet"));
+    content_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "content_leaflet"));
+    hdy_leaflet_set_visible_child_name(headerbar_leaflet, "list");
+    hdy_leaflet_set_visible_child_name(content_leaflet, "list");
+    app->headerbar_leaflet = headerbar_leaflet;
+    app->content_leaflet = content_leaflet;
 
     app->projects_list = GTK_LIST_BOX (gtk_builder_get_object (builder, "projects"));
     app->project_content = GTK_STACK (gtk_builder_get_object (builder, "project_content"));
-    app->content_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "content_leaflet"));
     app->content_headerbar = HDY_HEADER_BAR (gtk_builder_get_object(builder, "project_content_headerbar"));
-    app->headerbar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "headerbar_leaflet"));
     app->back_button = GTK_BUTTON (gtk_builder_get_object(builder, "back_button"));
 
 
