@@ -73,7 +73,7 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
-          <object class="HdyLeaflet" id="titlebar_leaflet">
+          <object class="HdyLeaflet" id="headerbar_leaflet">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="transition-type">slide</property>
