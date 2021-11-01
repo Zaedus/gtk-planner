@@ -2,6 +2,6 @@
 <gresources>
   <gresource prefix="/com/zaedus/gtk-planner">
     <file preprocess="xml-stripblanks">ui/mainwindow.glade</file>
-    <file>styles/section.css</file>
+    <file>app.css</file>
   </gresource>
 </gresources>
