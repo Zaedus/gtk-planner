@@ -10,7 +10,7 @@
                 "/usr/include/pangomm-1.4", // pangomm
                 "/usr/include/cairomm-1.0", // cairomm
                 "/usr/include/atkmm-1.6", // atkmm
-                "/usr/include/gdkmm-2.4", // gdkmm
+                // "/usr/include/gdkmm-2.4", // gdkmm
                 "/usr/include/gdkmm-3.0", // gdkmm but 3?
                 "/usr/include/giomm-2.4", // giomm
                 "/usr/include/glib-2.0", // glib
