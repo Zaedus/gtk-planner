@@ -1,5 +1,7 @@
 #include "section.hpp"
 
+#define SECTION_PADDING 5
+
 Section::Section(Project *project, std::string title, int position)
     : project{project}, position{position}, title{title}
 {
@@ -21,7 +23,8 @@ Section::Section(Project *project, std::string title, int position)
     gtk_box_pack_start(title_box, GTK_WIDGET (title_label), false, false, 0);
     gtk_box_pack_end(title_box, GTK_WIDGET (count_label), false, false, 0);
 
-    gtk_box_pack_start(container, GTK_WIDGET (title_box), false, false, 0);
+    gtk_box_pack_start(container, GTK_WIDGET (title_box), false, false, SECTION_PADDING);
+    gtk_box_pack_start(container, gtk_separator_new(GTK_ORIENTATION_HORIZONTAL), false, false, SECTION_PADDING);
 
     gtk_flow_box_insert(project->content_container, GTK_WIDGET (container), position);
 }
