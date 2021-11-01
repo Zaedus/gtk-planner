@@ -1,18 +1,18 @@
 CC = clang
 
-OBJ := ../../build
+OBJ   := ../build
 
 LIBS   := gtk+-3.0
 CFLAGS := $(shell pkg-config --cflags $(LIBS))
 
-GRESOURCE := ui.gresource.xml
+GRESOURCE := gtk-planner.gresource.xml
 
 all: resources compile
 
 compile: resources
 	$(CC) -c resources.c -o $(OBJ)/resources.o $(CFLAGS)
 
-resources: $(GRESOURCE) mainwindow.glade
+resources: $(GRESOURCE)
 	glib-compile-resources --target=resources.h --generate-header $(GRESOURCE)
 	glib-compile-resources --target=resources.c --generate-source $(GRESOURCE)
 
