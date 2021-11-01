@@ -5,8 +5,8 @@
 gtk-planner
 /build
 
-/resources/ui/resources.*
-/resources/ui/*~
+/resources/resources.*
+/resources/**/*~
 
 ## Allow
 
