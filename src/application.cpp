@@ -52,7 +52,7 @@ void PlannerApplication::on_startup()
 
     hdy_init();
 
-    Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/com/zaedus/gtk-planner/mainwindow.glade");
+    //Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_resource("/com/zaedus/gtk-planner/mainwindow.glade");
 
     create_main_window(this);
     setup_signals();
