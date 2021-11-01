@@ -6,14 +6,22 @@ void create_main_window(PlannerApplication *app)
     GtkListBox *projects_list;
     HdyLeaflet *content_leaflet;
     HdyLeaflet *headerbar_leaflet;
+    GtkCssProvider *css_provider;
 
     GtkBuilder *builder = gtk_builder_new();
-    gtk_builder_add_from_resource(builder, "/com/zaedus/gtk-planner/mainwindow.glade", NULL);
+    gtk_builder_add_from_resource(builder, "/com/zaedus/gtk-planner/ui/mainwindow.glade", NULL);
     
+    css_provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_resource(css_provider, "/com/zaedus/gtk-planner/app.css");
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER (css_provider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+
     main_window = GTK_APPLICATION_WINDOW (gtk_builder_get_object (builder, "main"));
     gtk_window_set_application(GTK_WINDOW (main_window), app->gobj());
     gtk_window_set_default_size(GTK_WINDOW (main_window), 1300, 900); // Note: Developement size, not official size
     gtk_widget_set_name(GTK_WIDGET (main_window), "gtk planner");
+
+
     app->main_window = main_window;
 
     headerbar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "headerbar_leaflet"));
