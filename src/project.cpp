@@ -40,6 +40,9 @@ void Project::show_project()
 {
     if (content_container == nullptr) {
         content_container = GTK_FLOW_BOX (gtk_flow_box_new());
+        gtk_widget_set_name(GTK_WIDGET (content_container), "project");
+
+        gtk_flow_box_set_activate_on_single_click(content_container, false);
         gtk_flow_box_set_selection_mode(content_container, GTK_SELECTION_NONE);
 
         gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
