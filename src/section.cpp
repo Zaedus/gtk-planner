@@ -9,9 +9,11 @@ Section::Section(Project *project, std::string title, int position)
     char *title_markup;
 
     title_box   = GTK_BOX (gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
-    container   = GTK_BOX (gtk_box_new(GTK_ORIENTATION_VERTICAL, 10));
+    container   = GTK_BOX (gtk_box_new(GTK_ORIENTATION_VERTICAL, 0));
     title_label = GTK_LABEL (gtk_label_new(NULL));
     count_label = GTK_LABEL (gtk_label_new("0"));
+
+    gtk_widget_set_name(GTK_WIDGET (container), "section");
 
     title_markup = g_markup_printf_escaped("<b>%s</b>", title.c_str());
     gtk_label_set_markup(title_label, title_markup);
