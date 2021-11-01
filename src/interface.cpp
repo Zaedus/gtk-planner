@@ -15,7 +15,6 @@ void create_main_window(PlannerApplication *app)
     gtk_css_provider_load_from_resource(css_provider, "/com/zaedus/gtk-planner/app.css");
     gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER (css_provider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
-
     main_window = GTK_APPLICATION_WINDOW (gtk_builder_get_object (builder, "main"));
     gtk_window_set_application(GTK_WINDOW (main_window), app->gobj());
     gtk_window_set_default_size(GTK_WINDOW (main_window), 1300, 900); // Note: Developement size, not official size
