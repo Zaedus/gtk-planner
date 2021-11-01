@@ -7,7 +7,6 @@ void create_main_window(PlannerApplication *app)
     HdyLeaflet *content_leaflet;
     HdyLeaflet *headerbar_leaflet;
 
-
     GtkBuilder *builder = gtk_builder_new();
     gtk_builder_add_from_resource(builder, "/com/zaedus/gtk-planner/mainwindow.glade", NULL);
     
@@ -28,7 +27,6 @@ void create_main_window(PlannerApplication *app)
     app->project_content = GTK_STACK (gtk_builder_get_object (builder, "project_content"));
     app->content_headerbar = HDY_HEADER_BAR (gtk_builder_get_object(builder, "project_content_headerbar"));
     app->back_button = GTK_BUTTON (gtk_builder_get_object(builder, "back_button"));
-
 
     gtk_widget_show(GTK_WIDGET (main_window));
 
