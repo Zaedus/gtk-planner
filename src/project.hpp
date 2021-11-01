@@ -26,10 +26,7 @@ private:
     GtkStack *project_content;
     HdyHeaderBar *content_headerbar;
 
-    GtkFlowBox *content_container = nullptr;
     GtkGrid *list_item_container;
-
-    std::vector<Section> sections;
 
 public:
     Project(std::string name, ProjectWidgets *widgets);
@@ -37,4 +34,6 @@ public:
     void show_project();
 
     std::string name;
+    std::vector<Section> sections;
+    GtkFlowBox *content_container = nullptr;
 };

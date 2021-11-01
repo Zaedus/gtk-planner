@@ -40,13 +40,13 @@ void Project::show_project()
 {
     if (content_container == nullptr) {
         content_container = GTK_FLOW_BOX (gtk_flow_box_new());
-        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 0);
-        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 1);
-        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 2);
-        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 3);
-        gtk_flow_box_insert(content_container, gtk_label_new(name.c_str()), 4);
+        gtk_flow_box_set_selection_mode(content_container, GTK_SELECTION_NONE);
 
         gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
+
+        sections.push_back(Section(this, "My Section", 0));
+        sections.push_back(Section(this, "My Second Section", 0));
+        sections.push_back(Section(this, "My Third Section", 0));
 
         gtk_widget_show_all(GTK_WIDGET (content_container));
     }
