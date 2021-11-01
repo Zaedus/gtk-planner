@@ -32,7 +32,7 @@ public:
     static void on_new_row_selected(GtkListBox *box, GtkListBoxRow *row, on_row_select_payload *pd);
     static void on_back_button_clicked(GtkButton *button, HdyLeaflet *leaflet);
 
-    HdyApplicationWindow *main_window;
+    GtkApplicationWindow *main_window;
     GtkListBox *projects_list;
     GtkStack *project_content;
     GtkButton *back_button;

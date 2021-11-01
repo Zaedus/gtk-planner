@@ -2,7 +2,7 @@
 
 void create_main_window(PlannerApplication *app)
 {
-    HdyApplicationWindow *main_window;
+    GtkApplicationWindow *main_window;
     GtkListBox *projects_list;
     HdyLeaflet *content_leaflet;
     HdyLeaflet *headerbar_leaflet;
@@ -11,7 +11,7 @@ void create_main_window(PlannerApplication *app)
     GtkBuilder *builder = gtk_builder_new();
     gtk_builder_add_from_resource(builder, "/com/zaedus/gtk-planner/mainwindow.glade", NULL);
     
-    main_window = HDY_APPLICATION_WINDOW (gtk_builder_get_object (builder, "main"));
+    main_window = GTK_APPLICATION_WINDOW (gtk_builder_get_object (builder, "main"));
     gtk_window_set_application(GTK_WINDOW (main_window), app->gobj());
     gtk_window_set_default_size(GTK_WINDOW (main_window), 1300, 900); // Note: Developement size, not official size
     gtk_widget_set_name(GTK_WIDGET (main_window), "gtk planner");
