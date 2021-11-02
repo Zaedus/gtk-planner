@@ -44,6 +44,8 @@ void Project::show_project()
 
         gtk_flow_box_set_activate_on_single_click(content_container, false);
         gtk_flow_box_set_selection_mode(content_container, GTK_SELECTION_NONE);
+        gtk_flow_box_set_max_children_per_line(content_container, 1);
+        //gtk_flow_box_set_homogeneous(content_container, true);
 
         gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
 
