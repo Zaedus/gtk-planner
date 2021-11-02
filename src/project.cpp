@@ -39,6 +39,7 @@ void Project::select_list_item()
 void Project::show_project()
 {
     if (content_container == nullptr) {
+        GtkScrolledWindow *scrolled_window = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new(NULL, NULL));
         content_container = GTK_FLOW_BOX (gtk_flow_box_new());
         gtk_widget_set_name(GTK_WIDGET (content_container), "project");
 
@@ -47,13 +48,14 @@ void Project::show_project()
         gtk_flow_box_set_max_children_per_line(content_container, 1);
         //gtk_flow_box_set_homogeneous(content_container, true);
 
-        gtk_stack_add_named(project_content, GTK_WIDGET (content_container), name.c_str());
+        gtk_container_add(GTK_CONTAINER (scrolled_window), GTK_WIDGET (content_container));
+        gtk_stack_add_named(project_content, GTK_WIDGET (scrolled_window), name.c_str());
 
-        sections.push_back(Section(this, "My Section", 0));
-        sections.push_back(Section(this, "My Second Section", 0));
-        sections.push_back(Section(this, "My Third Section", 0));
+        sections.push_back(Section(this, "To Do", 0));
+        sections.push_back(Section(this, "Doing", 1));
+        sections.push_back(Section(this, "Done", 2));
 
-        gtk_widget_show_all(GTK_WIDGET (content_container));
+        gtk_widget_show_all(GTK_WIDGET (scrolled_window));
     }
 
     hdy_header_bar_set_title(content_headerbar, name.c_str());
