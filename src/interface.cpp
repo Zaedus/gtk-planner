@@ -19,8 +19,6 @@ void create_main_window(PlannerApplication *app)
     gtk_window_set_application(GTK_WINDOW (main_window), app->gobj());
     gtk_window_set_default_size(GTK_WINDOW (main_window), 1300, 900); // Note: Developement size, not official size
     gtk_widget_set_name(GTK_WIDGET (main_window), "gtk planner");
-
-
     app->main_window = main_window;
 
     headerbar_leaflet = HDY_LEAFLET (gtk_builder_get_object(builder, "headerbar_leaflet"));

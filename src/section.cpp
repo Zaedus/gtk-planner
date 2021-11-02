@@ -26,7 +26,6 @@ Section::Section(Project *project, std::string title, int position)
     gtk_widget_set_valign(GTK_WIDGET (container), GTK_ALIGN_START);
 
     // Pack
-
     gtk_box_pack_start(title_box, GTK_WIDGET (title_label), false, false, 0);
     gtk_box_pack_end(title_box, GTK_WIDGET (count_label), false, false, 0);
 
