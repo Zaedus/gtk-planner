@@ -25,7 +25,7 @@ $(BIN): $(OBJECTS) $(HEADERS)
 	$(CC) -o $(BIN) $(OBJECTS) $(LDFLAGS)
 
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
-	$(CC) -c $< -o $@ $(CFLAGS) $(INCFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(OBJ)/resources.o: 
 	$(MAKE) -C $(RSC)
