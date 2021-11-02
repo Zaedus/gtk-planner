@@ -64,9 +64,9 @@ void PlannerApplication::on_startup()
     widgets->project_content = project_content;
     widgets->projects_list = projects_list;
 
-    projects.push_back(Project("My Project", widgets));
-    projects.push_back(Project("My Second Project", widgets));
-    projects.push_back(Project("My Third Project", widgets));
+    projects.push_back(Project("Gtk Planner", widgets));
+    projects.push_back(Project("Homework", widgets));
+    projects.push_back(Project("Daily", widgets));
 
     // Setup default project selected
     projects[0].select_list_item();
