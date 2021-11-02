@@ -20,6 +20,15 @@ Section::Section(Project *project, std::string title, int position)
     title_markup = g_markup_printf_escaped("<b>%s</b>", title.c_str());
     gtk_label_set_markup(title_label, title_markup);
 
+    gtk_label_set_max_width_chars(title_label, 20);
+    gtk_label_set_max_width_chars(count_label, 20);
+    gtk_label_set_width_chars(title_label, 20);
+    gtk_label_set_width_chars(count_label, 4);
+    gtk_label_set_justify(title_label, GTK_JUSTIFY_LEFT);
+    gtk_label_set_justify(count_label, GTK_JUSTIFY_RIGHT);
+
+    gtk_widget_set_valign(GTK_WIDGET (container), GTK_ALIGN_START);
+
     gtk_box_pack_start(title_box, GTK_WIDGET (title_label), false, false, 0);
     gtk_box_pack_end(title_box, GTK_WIDGET (count_label), false, false, 0);
 
