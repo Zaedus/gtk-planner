@@ -55,6 +55,8 @@ void Project::show_project()
         sections.push_back(Section(this, "Doing", 1));
         sections.push_back(Section(this, "Done", 2));
 
+        sections[0].add_card("do something", 0);
+
         gtk_widget_show_all(GTK_WIDGET (scrolled_window));
     }
 
